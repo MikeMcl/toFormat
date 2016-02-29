@@ -6,50 +6,64 @@ Adds a `toFormat` instance method to [big.js](https://github.com/MikeMcl/big.js/
 
 Node.js
 
-    npm install toformat
+```bash
+npm install toformat
+```
 
 Browser
 
-    <script src='path/to/big.js'></script>
-    <script src='path/to/toFormat.js'></script>
+```html
+<script src='path/to/big.js'></script>
+<script src='path/to/toFormat.js'></script>
+```
 
 ## Use
 
 Node.js
 
-    var Big = require('toformat')(require('big'));
-    var x = new Big(9876.54321);
-    x.toFormat(2);    // '9,876.54'
+```js
+var Big = require('toformat')(require('big'));
+var x = new Big(9876.54321);
+x.toFormat(2);    // '9,876.54'
 
-    Big.format.decimalSeparator = ',';
-    Big.format.groupSeparator: ' ';
-    x.toFormat(2);    // '9 876,54'
+Big.format.decimalSeparator = ',';
+Big.format.groupSeparator: ' ';
+x.toFormat(2);    // '9 876,54'
+```
 
 or
 
-    var Decimal = require('toformat')(require('decimal'));
-    // etc.
+```js
+var Decimal = require('toformat')(require('decimal'));
+// etc.
+```    
 
 Browser
 
-    toFormat(Big);
-    var x = new Big(9876.54321);
-    x.toFormat(2);    // '9,876.54'
+```js
+toFormat(Big);
+var x = new Big(9876.54321);
+x.toFormat(2);    // '9,876.54'
+```    
 
 The initial value of the format object, i.e. `Big.format` or `Decimal.format`, is
 
-    Big.format = {
-      decimalSeparator: '.',
-      groupSeparator: ',',
-      groupSize: 3,
-      secondaryGroupSize: 0,
-      fractionGroupSeparator: '',
-      fractionGroupSize : 0
-    };
+```js
+Big.format = {
+  decimalSeparator: '.',
+  groupSeparator: ',',
+  groupSize: 3,
+  secondaryGroupSize: 0,
+  fractionGroupSeparator: '',
+  fractionGroupSize : 0
+};
+```
 
 ## Test
 
-  `npm test`
+```bash
+npm test
+```
   
 ## Licence
 
