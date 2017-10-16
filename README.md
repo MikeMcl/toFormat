@@ -1,4 +1,4 @@
-#toFormat
+# toFormat
 
 Adds a `toFormat` instance method to [big.js](https://github.com/MikeMcl/big.js/) or [decimal.js](https://github.com/MikeMcl/decimal.js/).
 
@@ -7,7 +7,7 @@ Adds a `toFormat` instance method to [big.js](https://github.com/MikeMcl/big.js/
 Node.js
 
 ```bash
-npm install toformat
+$ npm install toformat
 ```
 
 Browser
@@ -19,54 +19,73 @@ Browser
 
 ## Use
 
-Node.js
+### Node.js
 
 ```js
-var Big = require('toformat')(require('big'));
-var x = new Big(9876.54321);
-x.toFormat(2);    // '9,876.54'
+Big = require('big')
+Big = require('toformat')(Big)
 
-Big.format.decimalSeparator = ',';
-Big.format.groupSeparator: ' ';
-x.toFormat(2);    // '9 876,54'
+x = new Big(9876.54321)
+x.toFormat(2)                       // '9,876.54'
+
+// Three different ways of setting a formatting property
+Big.format.decimalSeparator = ','
+x.format.groupSeparator: ' '
+x.toFormat(1, { groupSize: 2 })    // '98 76,5'
 ```
 
-or
+### Browser
 
 ```js
-var Decimal = require('toformat')(require('decimal'));
-// etc.
-```    
+toFormat(Big)
+x = new Big(9876.54321)
+x.toFormat(2)                      // '9,876.54'
+```
 
-Browser
-
-```js
-toFormat(Big);
-var x = new Big(9876.54321);
-x.toFormat(2);    // '9,876.54'
-```    
-
-The initial value of the format object, i.e. `Big.format` or `Decimal.format`, is
+### Further examples:
 
 ```js
-Big.format = {
+// The format object added to the Decimal constructor by this library.
+Decimal.format = {
   decimalSeparator: '.',
   groupSeparator: ',',
   groupSize: 3,
   secondaryGroupSize: 0,
   fractionGroupSeparator: '',
   fractionGroupSize : 0
-};
+}
+
+x.toFormat()                        // 123,456,789.987654321
+x.toFormat(2, 1)                    // 123,456,789.98
+
+// Add a format object to a Decimal instance.
+x.format = {
+  decimalSeparator: ',',
+  groupSeparator: '',
+}
+
+x.toFormat()                       // 123456789,987654321
+
+format = {
+  decimalSeparator: '.',
+  groupSeparator: ' ',
+  groupSize: 3,
+  fractionGroupSeparator: ' ',
+  fractionGroupSize : 5
+}
+
+// Pass a format object to the method call.
+x.toFormat(format)                 // 123 456 789.98765 4321
+x.toFormat(4, format)              // 123 456 789.9877
+x.toFormat(2, 1, format)           // 123 456 789.98
 ```
 
 ## Test
 
 ```bash
-npm test
+$ npm test
 ```
-  
+
 ## Licence
 
-MIT Expat.
-
-See *LICENCE.md*
+[MIT](LICENCE)

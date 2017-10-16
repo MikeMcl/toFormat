@@ -1,6 +1,6 @@
 {
   "name": "toformat",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Adds a `toFormat` instance method to decimal.js or big.js",
   "main": "toFormat.js",
   "devDependencies": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "node test",
-    "build": "uglifyjs toFormat.js -c -m -o toFormat.min.js"
+    "build": "uglifyjs toFormat.js -c -m -o toFormat.min.js --preamble \"/* toFormat.js v2.0.0 https://github.com/MikeMcl/toFormat */\""
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/MikeMcl/toFormat/issues"
   },
-  "homepage": "https://github.com/MikeMcl/toFormat#readme"
+  "homepage": "https://github.com/MikeMcl/toFormat#readme",
+  "files": [
+    "toFormat.js",
+    "toFormat.min.js"
+  ]
 }
