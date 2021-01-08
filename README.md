@@ -30,7 +30,7 @@ x.toFormat(2)                       // '9,876.54'
 
 // Three different ways of setting a formatting property
 Big.format.decimalSeparator = ','
-x.format.groupSeparator: ' '
+x.format.groupSeparator = ' '
 x.toFormat(1, { groupSize: 2 })    // '98 76,5'
 ```
 
